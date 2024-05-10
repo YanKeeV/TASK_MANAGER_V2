@@ -1,0 +1,15 @@
+.GeneralCommentContainer{
+    width: 100%;
+    height: auto;
+    background-color: #464646;
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.CommentHead{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
+}

@@ -1,0 +1,27 @@
+.ProjectPageTasksMainContentContainer{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CreateTaskHeader{
+    font-size: 36px;
+}
+
+.CreateTaskContainer{
+    height: 75vh;
+    width: 500px;
+}
+
+.TaskUserSelect{
+    width: 64%;
+    height: 50px;
+    background: #464646;
+    color: #7A7A7A;
+    border: none;
+    border-bottom: 5px solid #232323;
+    font-size: 25px;
+    color: white;
+}

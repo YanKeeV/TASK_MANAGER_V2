@@ -1,0 +1,164 @@
+.TaskContainerMain{
+    width: 100%;
+    height: 200px;
+    min-height: 200px;
+    background-color: #464646;
+    border-radius: 20px;
+    font-size: 24px;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.optionsImage{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.options{
+    width: 90px;
+
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #696969;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.optionsPart{
+    width: 96%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.ModalHeader{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #464646;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.FormModal:focus{
+    outline: none;
+}
+  
+.ModalWrapper{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ModalContainer{
+    width: 850px;
+    height: auto;
+    background-color: #7A7A7A;
+    padding: 20px 20px;
+    border-radius: 20px;
+}
+
+  
+
+.ModalClose{
+    width: 35px;
+    height: 35px;
+    top: 20px;
+    left: 20px;
+    margin-bottom: 20px;
+}
+
+.TaskField{
+    padding-top: 10px;
+    font-size: 28px;
+    color: #464646;
+}
+
+.ViewOptionSelector{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+}
+
+.ViewOptionSelector.description{
+    margin: 20px 0px;
+    padding: 15px;
+    background-color: #9F9F9F;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.ViewOptionSelector.comments{
+    margin: 20px 0px;
+    padding: 15px;
+    background-color: #9F9F9F;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    z-index: 1;
+}
+
+.FieldContainer{
+    width: 150px;
+}
+
+.CommentInputContainer{
+    display: flex;
+    position: relative;
+}
+
+.SendButton{
+    position: absolute;
+    top: 29px;
+    right: 20px;
+    font-size: 28px;
+    z-index: 2;
+    background-color: #D9D9D9;
+    color: black;
+    padding: 5px 30px;
+    border-radius: 20px;
+}
+
+.CommentsContainer{
+    overflow: auto;
+    max-height: 400px;
+    padding-right: 5px;
+}
+
+.CommentsContainer::-webkit-scrollbar{
+    border-radius: 3px;
+    width: 7px;
+    background-color: black;
+}
+
+.CommentsContainer::-webkit-scrollbar-thumb {
+    background: #6a6a6a;
+    border-radius: 3px;
+  }

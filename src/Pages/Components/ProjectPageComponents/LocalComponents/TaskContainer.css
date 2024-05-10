@@ -1,0 +1,36 @@
+.MainTaskContainer{
+    width: 24%;
+    height: 90%;
+    border: 5px solid ;
+    border-radius: 20px;
+    padding: 20px 10px;
+    font-size: 36px;
+
+}
+
+.TasksContainer{
+    margin-top: 10px;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.TasksContainer::-webkit-scrollbar{
+    border-radius: 3px;
+    width: 7px;
+    background-color: #464646;
+}
+
+.TasksContainer::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 3px;
+  }
+
+.TasksContainerHeader{
+    display: flex;
+    justify-content: space-between;
+}

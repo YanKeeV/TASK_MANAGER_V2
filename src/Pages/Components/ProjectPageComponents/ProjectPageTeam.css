@@ -1,0 +1,102 @@
+.ProjectTeamWrapper{
+    width: 90%;
+    height: 85%;
+}
+
+
+
+.PermissionsContainer{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 100px;
+    column-gap: 2%;
+    row-gap: 2%;
+}
+
+
+.RemoveButton{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.GridTeamSelect{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    font-size: 36px;
+    background: #464646;
+    color: white;
+    outline: none;
+    appearance: none;
+    padding: 0px 40px;
+}
+
+.arrowDropDown{
+    background: url(https://cdn.discordapp.com/attachments/1014171486329778219/1170694725968347186/down-arrow.png?ex=6559f96d&is=6547846d&hm=2dba2e1ca5b431677a3a07d6f66203a9e267c6bccde0622b878f814302ed817d&);
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    top: 33%;
+    right: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #464646;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #FF3E3E;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: #00FF66;
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

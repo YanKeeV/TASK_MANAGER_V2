@@ -1,0 +1,101 @@
+.FilesContainer{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FilesContentContainer{
+    width: 80%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.FilesTopPart{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.FilesHeading{
+    width: 100%;
+    font-size: 48px;
+}
+
+.TopFormUserInfo{
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+
+.TopFormActions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.FormButton{
+    width: 400px;
+    height: 70px;
+    border: 3px solid black;
+    border-radius: 20px;
+    color: white;
+    background: none;
+    font-size: 36px;
+}
+
+.BottomFilesPart{
+    height: 70%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15%;
+    grid-template-rows: auto;
+    column-gap: 10%;
+    row-gap: 10%;
+    overflow-y: scroll;
+}
+
+
+.BottomFilesPart::-webkit-scrollbar{
+    border-radius: 3px;
+    width: 7px;
+    background-color: #464646;
+}
+
+.BottomFilesPart::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 3px;
+  }
+
+
+
+.BottomFormGridItem{
+    width: 100%;
+    height: 160px;
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.FilesSearchInput{
+    margin-top: 20px;
+    width: 400px;
+    height: 80px;
+    background-color: #464646;
+    color: white;
+    border: none;
+    font-size: 32px;
+    border-radius: 20px;
+}
+
+
+.FileItem{
+    width: 100%;
+    height: 100%;
+    background: black;
+}

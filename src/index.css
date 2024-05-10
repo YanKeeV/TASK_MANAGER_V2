@@ -1,0 +1,40 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #343434;
+
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+
+.Toast{
+  position: fixed;
+  bottom: 60px;
+  left: 30px;
+  background-color: #696969;
+  width: 400px;
+  height: 150px;
+  border-radius: 20px;
+}
+

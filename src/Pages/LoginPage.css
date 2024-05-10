@@ -1,0 +1,45 @@
+.LoginContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.LoginFormContainer{
+    width: 37%;
+    height: 620px;
+    background-color: #232323;
+    border-radius: 20px;
+    position: absolute;
+}
+
+
+
+.LoginForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.RegisterFormContainer{
+    top: 150%;
+    position: fixed;
+    width: 37%;
+    height: 90%;
+    background-color: #232323;
+    border-radius: 20px;
+}
+
+.RegisterForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+

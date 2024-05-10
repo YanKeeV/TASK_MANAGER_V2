@@ -1,0 +1,98 @@
+.GlobalProfileContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: #696969;
+    
+}
+.ProfileContainer{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.ProfileContentContainer{
+    width: 80%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.TopFormPart{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Avatar{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.TopFormUserInfo{
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+
+.TopFormActions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.UserFormButton{
+    width: 400px;
+    height: 70px;
+    border-radius: 20px;
+    color: white;
+    background: none;
+    font-size: 36px;
+    border: 4px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.5s;
+}
+
+.UserFormButton:hover{
+    border-color: #fff;
+}
+
+.BottomFormPart{
+    height: 60%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 30% 30% 30%;
+    column-gap: 20%;
+}
+.BottomFormGridItem{
+    width: 100%;
+    height: 160px;
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ProfileFormInput{
+    margin-top: 5px;
+    width: 100%;
+    height: 85px;
+    background-color: #464646;
+    border: 1px solid #232323;
+    border-radius: 20px;
+    font-size: 32px;
+    color:white;
+    padding-left: 10px;
+}

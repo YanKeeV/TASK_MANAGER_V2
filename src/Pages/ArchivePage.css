@@ -1,0 +1,43 @@
+.GlobalArchivePageContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #696969;
+}
+.ArchivePageContainer{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    margin-left: 20%;
+}
+
+.ArchivePageWrapper{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.AchiveContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+
+.AchiveContainer::-webkit-scrollbar{
+    border-radius: 3px;
+    width: 7px;
+    background-color: black;
+}
+
+.AchiveContainer::-webkit-scrollbar-thumb {
+    background: #464646;
+    border-radius: 3px;
+  }
