@@ -30,7 +30,13 @@ function ProjectPageTeam({}) {
                 return;
             }
             let res = await updatePermissions({auth:userInfo.token,project:projectInfo.id,user:permissions.user,permission:name})
-            setPermissions({...permissions,[name]:value})
+            if(res.data === null){
+                setPermissions({...permissions,[name]:value})
+            }else{
+                toast.error("You do not have permission to perform this action", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                }); 
+            }
             console.log(res)
         }catch(err){
             console.log(err)

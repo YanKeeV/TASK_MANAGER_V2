@@ -44,6 +44,17 @@ export const userApiSlice = apiSlice.injectEndpoints({
         }
       }),
     }),
+    setImage: builder.mutation({
+      query: (data, formData) => ({
+        url: `${core_url}/user/set-image`,
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+          'Authorization' : `Token ${data.auth}`
+        },
+        body: formData,
+      }),
+    }),
     getAvailibleProjects: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/projects/${data.status}`,
@@ -397,6 +408,7 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useGetUserMutation,
+  useSetImageMutation,
   useGetAvailibleProjectsMutation,
   useGetAvailibleTeamsMutation,
   useGetTasksForUserMutation,

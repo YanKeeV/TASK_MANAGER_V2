@@ -114,7 +114,7 @@ function ProjectPageTasks({}) {
     const submitHandler = async (e) => {
         try{
             e.preventDefault();
-            if(taskName === '' || taskPriority === "" || taskDescription === "" || taskStartDate === "" || taskEndDate === "" || taskGroup === ""){
+            if(taskName === '' || taskPriority === "" || taskDescription === "" || taskStartDate === "" || taskEndDate === "" || taskGroup === "" || taskUser === ""){
                 toast.error("All inputs should be filled", {
                     position: toast.POSITION.BOTTOM_RIGHT,
                 });

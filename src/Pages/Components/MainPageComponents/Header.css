@@ -78,3 +78,8 @@
     margin-top: 20px;
     cursor: pointer;
 }
+
+.UserActions:hover{
+    background-color: #7A7A7A;
+    border-radius: 20px;
+}

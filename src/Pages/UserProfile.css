@@ -96,3 +96,13 @@
     color:white;
     padding-left: 10px;
 }
+
+.fileInput{
+    position: absolute;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+  

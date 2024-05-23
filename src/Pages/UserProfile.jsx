@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useRef  } from 'react'
 import './UserProfile.css'
 import { useNavigate } from 'react-router-dom';
-import { useGetUserMutation, useUpdateUserProfileMutation, useChangePasswordMutation } from '../slices/usersApiSlice';
+import { useGetUserMutation, useUpdateUserProfileMutation, useChangePasswordMutation, useSetImageMutation } from '../slices/usersApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../slices/authSlice';
 import Header from './Components/MainPageComponents/Header';
 import { useEffect } from 'react';
+import axios from 'axios';
 import { setUser } from '../slices/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from './Components/ProjectPageComponents/LocalComponents/ConfirmationModal';
+import user_png from '../Pages/Components/Images/user.png'
 
 function UserProfile() {
+
+    const fileInputRef = useRef(null);
 
     const [name,setName] = useState('') ;
     const [surname,setSurname] = useState('') ;
@@ -19,6 +23,7 @@ function UserProfile() {
     const [status,setStatus] = useState('');
     const [tag,setTag] = useState('');
     const [role,setRole] = useState('');
+    const [image, setImage] = useState(null);
 
     const [newPassword,setNewPassword]=useState('');
     const [oldPassword,setOldPassword]=useState('');
@@ -33,6 +38,7 @@ function UserProfile() {
     const [updateUser] = useUpdateUserProfileMutation();
     const [getUser] = useGetUserMutation();
     const [changePasswordReq] = useChangePasswordMutation();
+    const [setImageReq] = useSetImageMutation();
 
     const getCurrentUser = async()=>{
         try{
@@ -43,11 +49,50 @@ function UserProfile() {
         }
     }
 
+    const handleImageChange = async(e) => {
+        setImage(e.target.files[0]);
+
+        try{
+            let formData = new FormData();
+            formData.append('image', e.target.files[0]);
+            
+            console.log(formData.get('image'))
+            
+            const res = await axios.put(`http://176.98.26.195/core/user/set-image`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Token ${userInfo.token}`
+                }
+            });
+            console.log(res)
+            getCurrentUser();
+        }catch(err){
+            console.log(err)
+        }
+    };
+
     const changePassword = async()=>{
         try{
+            if(newPassword === '' || oldPassword === ""){
+                toast.error("All inputs should be filled", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+                return
+            }
             const res = await changePasswordReq({auth:userInfo.token, old_password:oldPassword, new_password:newPassword})
             console.log(res)
+            if(res.data.success){
+                toast.success("Password changed successfully", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+                setNewPassword('')
+                setOldPassword('')
+                setModalPasswordActive(false)
+            }
         }catch(err){
+            toast.error("Current password is incorrect", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
             console.log(err)
         }
     }
@@ -59,10 +104,14 @@ function UserProfile() {
             console.log(res)
             dispatch(setCredentials({email:res.data.data[0].email,token:userInfo.token,user_id:userInfo.user_id}))
             getCurrentUser();
-            navigate('/')
+            //navigate('/')
         } catch (err) {
             console.log(err)
         }
+    };
+
+    const handleClick = () => {
+        fileInputRef.current.click();
     };
 
     return (
@@ -72,7 +121,8 @@ function UserProfile() {
                 <form className='ProfileContentContainer' onSubmit={submitHandler}>
                     <div className='TopFormPart'>
                         <div  className='TopFormUserInfo'>
-                            <img className='Avatar' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/White_Square.svg/1200px-White_Square.svg.png'/>
+                            <img className='Avatar' src={certainUserInfo.image !== null ? certainUserInfo.image : user_png} onClick={handleClick}/>
+                            <input type="file" class="fileInput" ref={fileInputRef} onChange={handleImageChange} />
                             <div style={{marginLeft:"15px"}}>
                                 {certainUserInfo.first_name + ' ' + certainUserInfo.last_name} <br/>
                                 <span style={{fontSize:'32px'}}>@{certainUserInfo.tag}</span>

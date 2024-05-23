@@ -9,6 +9,8 @@ import Teams from './Teams';
 import { clearLocalStorageAndState } from '../../../slices/authSlice';
 import { setTeam } from '../../../slices/teamsSlice';
 import { useGetAvailibleProjectsMutation, useGetAvailibleTeamsMutation} from '../../../slices/usersApiSlice';
+import user_png from '../Images/user.png'
+
 function Header({activeTab}) {
 
 
@@ -129,7 +131,7 @@ function Header({activeTab}) {
             
             <div className='SpacingContainer2' >
                 <Link to={`/profile`} className='ContentContainer'  style={currentTab=='Profile'?{color:"white",textDecoration:"none",background:'#464646',borderRadius:'20px'}:{color:"white",textDecoration:"none"}} onClick={()=>{setShow(false);navigate('/profile')}}>
-                        <img style={{width:'80px',height:'80px',borderRadius:'50%', border:'1px solid black'}}  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/White_Square.svg/1200px-White_Square.svg.png"/>
+                        <img style={{width:'80px',height:'80px',borderRadius:'50%', border:'1px solid black'}}  src={certainUserInfo.image !== null ? certainUserInfo.image : user_png}/>
                         <div className='UserContentContainer'>
                             <div>{certainUserInfo.first_name + ' ' + certainUserInfo.last_name}</div>
                             <div>@{certainUserInfo.tag}</div>

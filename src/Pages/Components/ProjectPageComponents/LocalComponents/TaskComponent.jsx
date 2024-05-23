@@ -62,7 +62,7 @@ function TaskComponent({task, deleteTask, getTasks}) {
             }
             console.log(res);
         }catch(err){
-            toast.success("User has been successfully removed", {
+            toast.success("Task has been successfully removed", {
                 position: toast.POSITION.BOTTOM_RIGHT,
             }); 
             deleteTask(task.pk)
