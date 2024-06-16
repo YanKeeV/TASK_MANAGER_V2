@@ -3,7 +3,7 @@ import './Header.css'
 import logout from '../Images/logout.png'
 import { setProject } from '../../../slices/projectsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link,useNavigate} from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import CreateProjects from './CreateProjects';
 import Teams from './Teams';
 import { clearLocalStorageAndState } from '../../../slices/authSlice';
@@ -124,8 +124,9 @@ function Header({activeTab}) {
                 <div className='Heading' style={currentTab=='Archive'?{fontSize:'32px',background:'#464646',borderRadius:'10px'}:{fontSize:'32px'}}>
                     <Link to={'/archive'} style={{color:"white",textDecoration:"none"}}>Archive</Link>
                 </div>
-                <div className='Heading' style={currentTab!='Files' ? {fontSize:'32px'}:{fontSize:'32px',background:'#464646',borderRadius:'10px'}} onClick={()=>stateHandler("Files")}>
-                    Files
+                <div className='Heading' style={{fontSize:'32px',background:'#121212',borderRadius:'10px', color:'#464646', display:"flex", justifyContent:"space-between", position:"relative"}} onClick={()=>stateHandler("Files")}>
+                    <div>Files</div>
+                    <div style={{fontSize:"16px", position:"absolute", top:"8px", left:"80%"}}>In dev</div>
                 </div>
             </div>
             

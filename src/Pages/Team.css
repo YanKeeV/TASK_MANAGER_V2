@@ -56,16 +56,16 @@
     height: 100%;
 }
 
-.TaskContentList::-webkit-scrollbar{
+.TeamTasksContainer::-webkit-scrollbar{
     border-radius: 3px;
     width: 7px;
     background-color: black;
 }
 
-.TaskContentList::-webkit-scrollbar-thumb {
+.TeamTasksContainer::-webkit-scrollbar-thumb {
     background: #464646;
     border-radius: 3px;
-  }
+}
 
 .TaskTeamNaming{
     margin-left: 20px;
@@ -80,6 +80,7 @@
     align-items: center;
     flex-direction: column;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
 .TeamTaskContainer{
@@ -91,17 +92,28 @@
     padding: 20px 20px;
     box-sizing: border-box;
     position: relative;
-    
 }
 
 .TeamMemberListContainer{
     width: 100%;
     height: 94%;
     overflow-y: auto;
+    padding-right: 10px;
+}
+
+.TeamMemberListContainer::-webkit-scrollbar{
+    border-radius: 3px;
+    width: 7px;
+    background-color: black;
+}
+
+.TeamMemberListContainer::-webkit-scrollbar-thumb {
+    background: #464646;
+    border-radius: 3px;
 }
 
 .TeamMemberContainer{
-    margin-top: 20px;
+    margin-bottom: 10px;
     width: 100%;
     min-height: 250px;
     background: #464646;

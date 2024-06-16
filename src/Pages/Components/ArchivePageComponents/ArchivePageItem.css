@@ -4,7 +4,7 @@
     background-color: #464646;
     border-radius: 20px;
     padding: 15px 20px ;
-    position: relative;
+    display: flex;
     margin-top: 20px;
 }
 
@@ -12,12 +12,11 @@
     font-size:28px;
     word-wrap: break-word;
     overflow-y: auto;
-    max-width: 70%;
-    max-height: 50%;
+    width: 97%;
+    height: 70%;
 }
 
 .CompletedIn{
-    position: absolute;
     bottom: 10%;
     right: 1%;
     border: 3px solid #00FF66;
@@ -25,8 +24,19 @@
     border-radius: 20px;
     padding: 5px 20px;
     font-size: 28px;
+    text-align: center;
 }
 
+.archiveLeftSide{
+    width: 95%;
+}
+
+.archiveRightSide{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 500px;
+}
 
 .Description::-webkit-scrollbar{
     border-radius: 3px;
@@ -37,4 +47,59 @@
 .Description::-webkit-scrollbar-thumb {
     background: #6a6a6a;
     border-radius: 3px;
+  }
+
+.usersImages{
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Ширина контейнера */
+    height: 200px;
+}
+
+.usersImages img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid black;
+    object-fit: cover;
+    transition: all 0.3s ease; /* Анимация при наведении */
+  }
+  .usersImages img:nth-child(1) {
+    left: 0;
+    z-index: 1;
+  }
+  .usersImages img:nth-child(2) {
+    left: 35px;
+    z-index: 2;
+  }
+  .usersImages img:nth-child(3) {
+    left: 70px;
+    z-index: 3;
+  }
+  .usersImages img:nth-child(4) {
+    left: 105px;
+    z-index: 4;
+  }
+  .usersImages img:nth-child(5) {
+    left: 140px;
+    z-index: 5;
+  }
+  .usersImages img:nth-child(6) {
+    left: 175px;
+    z-index: 6;
+  }
+  .usersImages img:nth-child(7) {
+    left: 210px;
+    z-index: 7;
+  }
+  .usersImages img:nth-child(8) {
+    left: 245px;
+    z-index: 8;
+  }
+  .usersImages img:hover {
+    /*transform: scale(1.2); /* Увеличение фотографии при наведении */
+    z-index: 10; /* Поднятие фотографии над остальными */
   }

@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation,useLoginMutation, useGetUserMutation, useGetAvailibleProjectsMutation, useGetAvailibleTeamsMutation } from '../../../slices/usersApiSlice';
 import { setCredentials } from '../../../slices/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
-
-
-
+import { setUser } from '../../../slices/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterForm({registerHandler}) {
     const [name,setName] = useState('') ;
@@ -30,19 +30,29 @@ function RegisterForm({registerHandler}) {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        if(name == "" || surname == "" || tag == "" || password == "" || email == ""){
+          toast.error("All inputs shuold be filled", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+          return;
+        }
           try {
             console.log('in')
             const res = await register({email:email, first_name:name, last_name:surname, password:password, tag:tag });
             
             const res2 = await login({username:email,password:password})
+            console.log(res2)
+            console.log("res2")
             dispatch(setCredentials({ ...res2.data }));
             
-            const res3 = await getUser({auth:res.data.token})
-            dispatch(setUser({...res3.data.data[0],password:''}))
+            const res3 = await getUser({auth:res2.data.token})
+            console.log(res3)
+            console.log("res3")
+            dispatch(setUser({...res3.data.data[0]}))
 
             navigate('/');
           } catch (err) {
-            toast.error(err?.data?.message || err.error);
+              console.log(err)
           }
       };
 
@@ -66,11 +76,11 @@ function RegisterForm({registerHandler}) {
                             <span className={tag.length>0 ? "floating label dirty" : "floating label"} >Tag</span>
                           </div>
                           <div className='microInputContainer'>
-                            <input className='FormInput' onChange={(e)=>setPassword(e.target.value)} />
+                            <input className='FormInput' type="password" onChange={(e)=>setPassword(e.target.value)} />
                             <span className={password.length>0 ? "floating label dirty" : "floating label"} >Password</span>
                           </div>  
                           <div className='microInputContainer'>
-                            <input className='FormInput' onChange={(e)=>setEmail(e.target.value)} />
+                            <input className='FormInput' type="email" onChange={(e)=>setEmail(e.target.value)} />
                             <span className={email.length>0 ? "floating label dirty" : "floating label"} >Email</span>
                           </div>
                         </div>
@@ -80,6 +90,7 @@ function RegisterForm({registerHandler}) {
             <div className='RegisterFormBottomContainer' onClick={()=>registerHandler(false)}>
                 Return
             </div>
+            <ToastContainer theme="dark" />
         </form>
     )
 }

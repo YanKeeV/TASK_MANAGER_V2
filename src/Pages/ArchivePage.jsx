@@ -16,7 +16,7 @@ function ArchivePage({}) {
     const  getProjects= useCallback( async() =>{
         try{
         const res = await getArchivedProjects({auth: userInfo.token});
-        console.log(res.data.data)
+        console.log(projects)
         setProjects(res.data.data)
         }catch(err){
             console.log(err)

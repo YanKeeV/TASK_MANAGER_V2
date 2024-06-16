@@ -149,6 +149,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
+    getProjectArchiveUsers: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/${data.project}/users/archive`,
+        method: 'GET',
+        headers: {
+          'Authorization' : `Token ${data.auth}`
+        },
+      }),
+    }),
     deleteUserFromProject: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/project/delete/user`,
@@ -287,6 +296,16 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    createTeam: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/team/create`,
+        method: 'POST',
+        headers: {
+          'Authorization' : `Token ${data.auth}`
+        },
+        body: data,
+      }),
+    }),
     declineTeamInvite: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/team/invite/decline`,
@@ -299,7 +318,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     getTeamTasks: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/${data.team}/tasks`,
+        url: `${USERS_URL}/team/${data.team}/tasks`,
         method: 'GET',
         headers: {
           'Authorization' : `Token ${data.auth}`
@@ -308,11 +327,11 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     getTeamMembers: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/${data.team}/users`,
+        url: `${USERS_URL}/team/${data.team}/users`,
         method: 'GET',
         headers: {
           'Authorization' : `Token ${data.auth}`
-        }
+        },
       }),
     }),
     getArchivedProjects: builder.mutation({
@@ -419,11 +438,13 @@ export const {
   useGetProjectTasksMutation,
   useGetProjectInfoMutation,
   useGetProjectUsersMutation,
+  useGetProjectArchiveUsersMutation,
   useDeleteUserFromProjectMutation,
   useUpdateProjectMutation,
   useUpdateUserProfileMutation,
   useDeleteTaskMutation,
   useCreateTaskMutation,
+  useCreateTeamMutation,
   useUpdateTaskMutation,
   useUpdateTaskStatusMutation,
   useAddTaskExecutorMutation,

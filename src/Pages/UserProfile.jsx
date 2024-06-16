@@ -121,7 +121,7 @@ function UserProfile() {
                 <form className='ProfileContentContainer' onSubmit={submitHandler}>
                     <div className='TopFormPart'>
                         <div  className='TopFormUserInfo'>
-                            <img className='Avatar' src={certainUserInfo.image !== null ? certainUserInfo.image : user_png} onClick={handleClick}/>
+                            <img className='Avatar' src={certainUserInfo.image ?? user_png} onClick={handleClick}/>
                             <input type="file" class="fileInput" ref={fileInputRef} onChange={handleImageChange} />
                             <div style={{marginLeft:"15px"}}>
                                 {certainUserInfo.first_name + ' ' + certainUserInfo.last_name} <br/>

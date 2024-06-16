@@ -1,30 +1,44 @@
 import React, { useState,useCallback,useEffect } from 'react'
 import './Projects.css'
-import { useAcceptTeamInviteMutation, useDeclineTeamInviteMutation, useGetAvailibleTeamsMutation, useGetTeamInvitesMutation } from '../../../slices/usersApiSlice';
+import { useAcceptTeamInviteMutation, useDeclineTeamInviteMutation, useGetAvailibleTeamsMutation, useGetTeamInvitesMutation, useCreateTeamMutation } from '../../../slices/usersApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import ok from '../Images/ok.png';
+import cancel from '../Images/cancel.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Teams({hide,setTeams}) {
 
     const [name,setName] = useState('') ;
-    const [password,setPassword] = useState('') ;
-    const [description,setDescription] = useState('');
-    const [start_date,setStartDate] = useState('');
-    const [end_date,setEndDate] = useState('');
 
     const dispatch = useDispatch();
 
     const [invites,setInvites]=useState([])
 
+    const [createTeam] = useCreateTeamMutation();
+
     const [getInvites] = useGetTeamInvitesMutation();
     const [acceptInvite] = useAcceptTeamInviteMutation();
     const [declineInvite] = useDeclineTeamInviteMutation();
-     const [getAvailibleTeams] = useGetAvailibleTeamsMutation();
+    const [getAvailibleTeams] = useGetAvailibleTeamsMutation();
 
     const { userInfo } = useSelector((state) => state.auth);
 
     const submitHandler = async (e) => {
-        console.log('kek')
+        try{
+            if(name === ''){
+                e.preventDefault();
+                toast.error("All inputs should be filled", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+                return
+            }
+            const res = await createTeam({auth:userInfo.token, name:name})  
+            
+        }catch(err){
+ 
+        }
     };
 
     const getTeamInvites = useCallback(async()=>{
@@ -67,49 +81,38 @@ function Teams({hide,setTeams}) {
             <div className='ProjectsContentContainer'>
                 <div className='ProjectInvites'>
                     <div style={{fontSize:'36px',height:'10%',display:'flex',justifyContent:'center',alignItems:'center'}}>Team Invites</div>
+                    {invites.length === 0 ? (
+                        <div style={{width:'90%', height:"80%", display:"flex", justifyContent:"center", color:"#7A7A7A"}}>No invitations yet</div>
+                    ) : (
                     <div className='ProjectInvitesContainer'>
-                    {invites.map(invite=>(
-                        <div className='ProjectLinkContainer' key={invite.pk}>
-                            <div className='ProjectLinkInnerContainer'>
-                                <div style={{fontSize:'36px',paddingLeft:'20px'}}>{invite.team}</div>
-                                <div style={{fontSize:'36px'}} onClick={()=>acceptTeamInvite(invite.pk)}>+</div>
-                                <div style={{fontSize:'36px'}} onClick={()=>declineTeamInvite(invite.pk)}>-</div>
+                        {invites.map(invite=>(
+                            <div className='ProjectLinkContainer' key={invite.pk}>
+                                <div className='ProjectLinkLeft'>
+                                    <div style={{fontSize:'36px',paddingLeft:'20px'}}>{invite.team}</div>
+                                </div>
+                                <div className='ProjectLinkRight'>
+                                    <img style={{height:'40px', paddingRight:'20px', cursor:'pointer'}} onClick={()=>acceptTeamInvite(invite.pk)} src={ok} alt="" />
+                                    <img style={{height:'40px', paddingRight:'20px', cursor:'pointer'}} onClick={()=>declineTeamInvite(invite.pk)} src={cancel} alt="" />
+                                </div>
                             </div>
-                        </div>
                         ))}
                     </div>
+                    )}
                 </div>
-                <div className='CreateProjectForm'>
-                <div style={{fontSize:'36px',height:'10%',display:'flex',justifyContent:'center',alignItems:'center'}}>Create Team</div>
+                <div className='CreateTeamForm'>
                     <form className='CreateProjectContainer' onSubmit={submitHandler}>
-                        <div className='CenterMainContainer'>
+                        <div style={{fontSize:'36px',height:'10%',display:'flex',justifyContent:'center',alignItems:'center', marginBottom:'30px'}}>Create Team</div>
                             <div className='microInputContainer'>
                                 <input className='FormInput' onChange={(e)=>setName(e.target.value)}/>
                                 <span className={name.length>0 ? "floating label dirty" : "floating label"} >Team Name</span>
                             </div>
-                            <div className='microInputContainer'>
-                                <input className='FormInput' onChange={(e)=>setPassword(e.target.value)}/>
-                                <span className={password.length>0 ? "floating label dirty" : "floating label"} >Password</span>
-                            </div>
-                            <div className='microInputContainer'>
-                                <input className='FormInput' type='date'  style={start_date?{color:'white'}:{color:'transparent'}} onChange={(e)=>setStartDate(e.target.value)}/>
-                                <span className={start_date.length>0 ? "floating label dirty" : "floating label"} >Start date</span>
-                            </div>
-                            <div className='microInputContainer'>
-                                <input className='FormInput' type='date' style={end_date?{color:'white'}:{color:'transparent'}} value={end_date} onChange={(e)=>setEndDate(e.target.value)}/>
-                                <span className={end_date.length>0 ? "floating label dirty" : "floating label"} >End date</span>
-                            </div>
-                            <div className='microInputContainer'>
-                                <input className='FormInput' onChange={(e)=>setDescription(e.target.value)}/>
-                                <span className={description.length>0 ? "floating label dirty" : "floating label"} >Description</span>
-                            </div>
                             <button className='CreateProjectButton' type='submit'>
                                     Create
                             </button>
-                        </div>
                     </form>
                 </div>
             </div>
+            <ToastContainer theme="dark" />
         </div>
     )
 }

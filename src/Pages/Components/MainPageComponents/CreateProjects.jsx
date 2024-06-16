@@ -100,8 +100,8 @@ function CreateProjects({show,setProjects}) {
                                     <div style={{fontSize:'36px',paddingLeft:'20px'}}>{invite.project}</div>
                                 </div>
                                 <div className='ProjectLinkRight'>
-                                    <img style={{height:'40px', paddingRight:'20px'}} onClick={()=>acceptProjectInvite(invite.pk)} src={ok} alt="" />
-                                    <img style={{height:'40px', paddingRight:'20px'}} onClick={()=>declineProjectInvite(invite.pk)} src={cancel} alt="" />
+                                    <img style={{height:'40px', paddingRight:'20px', cursor:'pointer'}} onClick={()=>acceptProjectInvite(invite.pk)} src={ok} alt="" />
+                                    <img style={{height:'40px', paddingRight:'20px', cursor:'pointer'}} onClick={()=>declineProjectInvite(invite.pk)} src={cancel} alt="" />
                                 </div>
                             </div>
                             ))}
@@ -139,6 +139,7 @@ function CreateProjects({show,setProjects}) {
                     </form>
                 </div>
             </div>
+            <ToastContainer theme="dark" />
         </div>
     )
 }
